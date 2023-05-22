@@ -1,0 +1,16 @@
+<h1>NEW GAME</h1>
+<br>
+
+<ul class ="list-group list-group-horizontal">
+  <% @new.each do |letter|%>
+    <li class="li list-group-item active m-1" aria-current="true"><%= letter %></li>
+  <% end %>
+</ul>
+<br>
+<p>What is the longest word you can find ?</p>
+<form action="score" method="post" data-turbo="false">
+  <%= hidden_field_tag :authenticity_token, form_authenticity_token %>
+  <input type="text" name="word" size="65">
+  <input name="new" type="hidden" value="<%= @new.join(",") %>" />
+  <input type="submit" value="Play" class="btn btn-primary mb-1">
+</form>
